@@ -19,4 +19,9 @@ public class Student extends Person{
     public Student(String name, int age) {
         super(name, age);
     }
+
+    @Override
+    public String introduce() {
+        return super.introduce()+" I am a Student. I am at "+this.number.getDisplayName()+".";
+    }
 }
