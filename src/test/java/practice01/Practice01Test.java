@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 public class Practice01Test {
+    // 2min
     @Test
     public void should_person_have_name_and_age() throws Exception {
         Person person = new Person("Tom", 21);
