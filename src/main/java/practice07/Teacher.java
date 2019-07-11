@@ -8,6 +8,10 @@ public class Teacher extends Person{
         this.number = number;
     }
 
+    public Teacher(String name, int age) {
+        super(name, age);
+    }
+
     public Klass getNumber() {
         return number;
     }
@@ -18,6 +22,9 @@ public class Teacher extends Person{
 
     @Override
     public String introduce() {
+        if(this.number == null){
+            return super.introduce()+" I am a Teacher. I teach No Class.";
+        }
         return super.introduce()+" I am a Teacher. I teach "+this.number.getDisplayName()+".";
     }
 }
