@@ -57,7 +57,7 @@ public class Teacher extends Person {
 
     public String introduceWith(Student student){
         for(Klass klass : classes) {
-            if (klass.getNumber() == student.getNumber().getNumber()) {
+            if (klass.isIn(student)) {
                 return super.introduce() + " I am a Teacher. I teach " + student.getName() + ".";
             }
         }

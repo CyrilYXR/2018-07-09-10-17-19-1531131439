@@ -50,4 +50,8 @@ public class Klass {
             member.add(student);
         }
     }
+
+    public Boolean isIn(Student student){
+        return this.number == student.getNumber().getNumber();
+    }
 }
