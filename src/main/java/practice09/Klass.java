@@ -29,8 +29,11 @@ public class Klass {
     }
 
     public void assignLeader(Student student) {
-        this.leader = student;
-        System.out.println("It is not one of us.");
+        if(student.getNumber().getNumber() == this.number) {
+            this.leader = student;
+        } else {
+            System.out.print("It is not one of us.\n");
+        }
     }
 
     public void appendMember(Student student) {

@@ -40,14 +40,9 @@ public class Person {
 
     @Override
     public boolean equals(Object obj) {
-        if(this.hashCode() == obj.hashCode()){
-            return true;
-        }
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.id;
+        if(this == obj) return true;
+        if(obj == null || obj.getClass() != this.getClass()) return false;
+        Person person = (Person) obj;
+        return this.id == person.id;
     }
 }

@@ -28,6 +28,9 @@ public class Teacher extends Person {
     public Teacher(int id, String name, int age, LinkedList<Klass> linkedList) {
         super(id, name, age);
         this.classes = linkedList;
+        for (Klass klass : linkedList) {
+            klass.addTeacher(this);
+        }
     }
 
     public Klass getNumber() {
@@ -74,5 +77,13 @@ public class Teacher extends Person {
     }
 
 
+    public void attend(Student student) {
+        if(number.getStudentStatus() != null) {
+            System.out.print(String.format("I am %s. I know %s has joined %s.\n", this.getName(), student.getName(), student.getNumber().getDisplayName()));
+        }
+        if(number.getLeaderStatus() != null) {
+            System.out.print(String.format("I am %s. I know %s become Leader of %s.\n", this.getName(), student.getName(), student.getNumber().getDisplayName()));
+        }
+    }
 }
 

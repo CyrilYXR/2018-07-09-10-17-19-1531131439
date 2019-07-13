@@ -6,14 +6,18 @@ import java.util.List;
 public class Klass {
     private int number;
     private Student leader;
-    private List member = new LinkedList<>();
+    private List<Student> member = new LinkedList<>();
+    private List<Teacher> teachers = new LinkedList<>();
+    private String studentStatus;
+
+    public void addTeacher(Teacher teacher) {
+        this.teachers.add(teacher);
+    }
+
+    private String leaderStatus;
 
     public List getMember() {
         return member;
-    }
-
-    public void setMember(List member) {
-        this.member = member;
     }
 
     public Student getLeader() {
@@ -41,13 +45,58 @@ public class Klass {
     }
 
     public void assignLeader(Student student) {
+        if(student.getNumber().getNumber() != this.number) {
+            System.out.print("It is not one of us.\n");
+            return;
+        }
         this.leader = student;
-        System.out.println("It is not one of us.");
+        student.setNumber(this);
+        this.leaderStatus = student.getName();
+        for (Teacher teacher : teachers) {
+            teacher.setNumber(this);
+            teacher.attend(student);
+            this.leaderStatus = null;
+        }
+    }
+
+    public void setMember(List<Student> member) {
+        this.member = member;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+
+    public String getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(String studentStatus) {
+        this.studentStatus = studentStatus;
+    }
+
+    public String getLeaderStatus() {
+        return leaderStatus;
+    }
+
+    public void setLeaderStatus(String leaderStatus) {
+        this.leaderStatus = leaderStatus;
     }
 
     public void appendMember(Student student) {
         if(!member.contains(student)){
             member.add(student);
+            student.setNumber(this);
+            this.studentStatus = student.getName();
+            for (Teacher teacher : teachers) {
+                teacher.setNumber(this);
+                teacher.attend(student);
+                this.studentStatus = null;
+            }
         }
     }
 
